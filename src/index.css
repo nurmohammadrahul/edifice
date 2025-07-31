@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ================ */
+/*  Dark Mode Setup  */
+/* ================ */
+@custom-variant dark (&:where(.dark, .dark *));
+:root {
+  color-scheme: light dark;
+  --color-primary: #c20e35;
+  --color-primary-dark: #a00c2d;
+}
+
+:--dark {
+  color-scheme: dark;
+}
+
+/* ================ */
+/*  Base Styles      */
+/* ================ */
+*,
+*::before,
+*::after {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased;
+}
+
+/* ================ */
+/*  Components       */
+/* ================ */
+@layer components {
+  .btn-primary {
+    @apply bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] 
+           text-white px-6 py-3 rounded-md transition-colors duration-300
+           focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] 
+           focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold mb-6 relative pb-4;
+    
+    &::after {
+      @apply content-[''] absolute bottom-0 left-0 w-16 h-1 bg-[var(--color-primary)];
+    }
+  }
+}
+
+/* ================ */
+/*  Dark Mode Adjustments */
+/* ================ */
+.dark {
+  img:not(.light-image) {
+    @apply brightness-90 contrast-110;
+  }
+  
+  video {
+    @apply brightness-90;
+  }
+}
+
+/* ================ */
+/*  Utilities        */
+/* ================ */
+.scrollbar-hidden::-webkit-scrollbar {
+  @apply hidden;
+}
+
+/* ================ */
+/*  Animations       */
+/* ================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+/* ================ */
+/*  Scrollbar        */
+/* ================ */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[var(--color-primary)] rounded-full hover:bg-[var(--color-primary-dark)];
+}
