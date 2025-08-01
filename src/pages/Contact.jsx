@@ -100,7 +100,7 @@ const Contact = () => {
                     ></iframe>
                 </div>
             </section>
-            <div data-aos="fade-up">
+            <div data-aos="fade-up" >
                 <ContactForm/>
             </div>
         </main>
