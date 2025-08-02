@@ -1,10 +1,17 @@
-
+import { useEffect } from "react";
+import AOS from 'aos'
 const AboutHome = () => {
-
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+        });
+    }, []);
     return (
         <section
-            className="bg-white text-black dark:bg-black dark:text-white py-10 md:py-20 aos-init aos-animate"
-         >
+            data-aos="fade-up"
+            className="bg-white text-black dark:bg-black dark:text-white py-10 md:py-20 "
+        >
             <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between gap-10">
                 <div className="lg:w-1/2 space-y-6">
                     <p className="text-[#c20e35] dark:text-red-600 text-sm uppercase tracking-wide">

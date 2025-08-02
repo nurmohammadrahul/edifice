@@ -58,7 +58,6 @@ const News = () => {
             duration: 800,
             easing: 'ease-in-out',
             once: true,
-            mirror: false
         });
         document.title = "News | EDIFICE";
         window.scrollTo(0, 0);

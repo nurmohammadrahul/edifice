@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import AOS from 'aos'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import img from "../../assets/images/hero/01.jpg"
@@ -34,6 +35,10 @@ const Testimonials = () => {
   ];
 
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+    });
     if (swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.autoplay.start();
     }
@@ -41,7 +46,8 @@ const Testimonials = () => {
 
   return (
     <section
-      className="relative text-white dark:text-black py-20 bg-fixed bg-center bg-cover"
+      data-aos="fade-up"
+      className="relative text-white dark:text-black py-20 bg-center"
       style={{ backgroundImage: `url(${img})` }}
     >
       <div className="bg-white/60 dark:bg-black/60 absolute inset-0 z-0 transition-colors duration-300"></div>

@@ -6,17 +6,14 @@ import ContactForm from '../components/common/ContactForm';
 
 const Contact = () => {
     useEffect(() => {
-        document.title = "Contact Us | EDIFICE";
-        window.scrollTo(0, 0);
-      }, []);
-    useEffect(() => {
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
-    }, []);
-
+        document.title = "Contact Us | EDIFICE";
+        window.scrollTo(0, 0);
+      }, []);
     const contactItems = [
         {
             icon: (

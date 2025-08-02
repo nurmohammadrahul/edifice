@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Default to true (dark mode)
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    // Initialize state
+    // Initialize state - default to dark if no preference saved
     const initialDarkMode = savedTheme 
       ? savedTheme === 'dark' 
-      : systemPrefersDark;
+      : true; // Default to dark mode if no preference
     
     setDarkMode(initialDarkMode);
     applyTheme(initialDarkMode);

@@ -119,13 +119,13 @@ const Header = () => {
                   </summary>
                   <ul className="ml-4 mt-2 space-y-2">
                     <li>
-                      <Link to="/projects/ongoing" className="block py-2" onClick={toggleMenu}>Ongoing</Link>
+                      <Link to="/projects" className="block py-2" onClick={toggleMenu}>Ongoing</Link>
                     </li>
                     <li>
-                      <Link to="/projects/upcoming" className="block py-2" onClick={toggleMenu}>Upcoming</Link>
+                      <Link to="/projects" className="block py-2" onClick={toggleMenu}>Upcoming</Link>
                     </li>
                     <li>
-                      <Link to="/projects/completed" className="block py-2" onClick={toggleMenu}>Completed</Link>
+                      <Link to="/projects " className="block py-2" onClick={toggleMenu}>Completed</Link>
                     </li>
                   </ul>
                 </details>
@@ -134,7 +134,7 @@ const Header = () => {
                 <Link to="/news" className="block py-2" onClick={toggleMenu}>Blog</Link>
               </li>
               <li>
-                <Link to="/gallery" className="block py-2" onClick={toggleMenu}>Gallery</Link>
+                <Link to="/galleryalbum" className="block py-2" onClick={toggleMenu}>Gallery</Link>
               </li>
               <li>
                 <Link to="/career" className="block py-2" onClick={toggleMenu}>Career</Link>

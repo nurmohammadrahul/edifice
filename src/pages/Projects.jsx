@@ -16,8 +16,8 @@ const Projects = () => {
                 backgroundImage={img}
             />
             <ProjectsGrid
-                subtitle="Our Projects"
-                title="Projects"
+                subtitle=""
+                title=""
             />
         </main>
     );

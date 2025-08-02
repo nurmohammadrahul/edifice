@@ -1,7 +1,7 @@
 const InnerHero = ({ title, subtitle, backgroundImage }) => {
     return (
       <section 
-        className="relative bg-black h-[60vh] min-h-[400px] bg-cover bg-center bg-no-repeat flex items-center justify-center text-center"
+        className="relative bg-black h-[55vh] min-h-[350px] bg-cover bg-center bg-no-repeat flex items-center justify-center text-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="absolute inset-0 bg-black/10" />
