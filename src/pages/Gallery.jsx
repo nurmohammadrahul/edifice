@@ -113,12 +113,10 @@ const Gallery = () => {
                 </div>
             </section>
             {isModalOpen && (
-                <div
-                    className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center"
-                    onClick={closeModal}
-                >
+                <div className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4">
+                    {/* Close Button (top right) */}
                     <button
-                        className="absolute top-6 right-6 text-white text-3xl hover:text-[#c20e35] focus:outline-none"
+                        className="absolute top-4 right-4 text-white text-3xl hover:text-[#c20e35] z-50"
                         onClick={(e) => {
                             e.stopPropagation();
                             closeModal();
@@ -127,8 +125,10 @@ const Gallery = () => {
                     >
                         &times;
                     </button>
+
+                    {/* Left Arrow */}
                     <button
-                        className="absolute left-6 text-white text-4xl hover:text-[#c20e35] focus:outline-none"
+                        className="absolute left-4 text-white text-3xl hover:text-[#c20e35] z-50  rounded-full p-2"
                         onClick={(e) => {
                             e.stopPropagation();
                             navigateImage('prev');
@@ -137,16 +137,20 @@ const Gallery = () => {
                     >
                         ❮
                     </button>
-                    <div className="relative max-w-[90vw] max-h-[90vh]">
+
+                    {/* Image Container */}
+                    <div className="relative w-full h-full flex items-center justify-center">
                         <img
                             src={loadedImages[currentImageIndex]?.src}
                             alt={loadedImages[currentImageIndex]?.alt}
-                            className="min-w-[80vw] min-h-[80vh] object-contain"
+                            className="max-w-full max-h-full object-contain"
                             onClick={(e) => e.stopPropagation()}
                         />
                     </div>
+
+                    {/* Right Arrow */}
                     <button
-                        className="absolute right-6 text-white text-4xl hover:text-[#c20e35] focus:outline-none"
+                        className="absolute right-4 text-white text-3xl hover:text-[#c20e35] z-50  rounded-full p-2"
                         onClick={(e) => {
                             e.stopPropagation();
                             navigateImage('next');
