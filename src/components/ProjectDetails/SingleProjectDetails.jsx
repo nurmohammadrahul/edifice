@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import img1 from "../../assets/images/hero/1.jpg";
-
+import AOS from 'aos'
 const SingleProjectDetails = () => {
   const project = {
     title: "Surma Tower",
@@ -17,22 +17,28 @@ const SingleProjectDetails = () => {
       { label: "Lift:", value: "Modern Passenger Lift" },
       { label: "Security:", value: "24/7 Surveillance" }
     ],
-    images: [img1] 
+    images: [img1]
   };
-
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+  })
   return (
     <section className="bg-white text-black dark:bg-black dark:white transition-colors duration-300 ease-in-out py-16 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <div className="w-full md:w-4/5 mb-10">
+      <div  className="max-w-7xl mx-auto flex flex-col items-center">
+        <div data-aos="fade-up" className="w-full md:w-4/5 mb-10">
           <div className="overflow-hidden shadow-md">
-            <img 
-              src={project.images[0]} 
+            <img
+              src={project.images[0]}
               alt={project.title}
               className="w-full h-[550px] object-cover"
             />
           </div>
         </div>
-        <div className="w-full md:w-4/5">
+        <div data-aos="fade-up" className="w-full md:w-4/5">
           <h1 className="text-4xl font-bold uppercase mb-2 dark:text-white text-gray-900">
             {project.title}
           </h1>

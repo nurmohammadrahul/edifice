@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import AOS from "aos"
 import img1 from "../../assets/images/hero/1.jpg";
 import img2 from "../../assets/images/hero/2.jpg";
 import img3 from "../../assets/images/hero/3.jpg";
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 const ProjectDetailsGallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -16,6 +17,11 @@ const ProjectDetailsGallery = () => {
 
   // Preload images
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
     const loadImage = (src) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -31,6 +37,7 @@ const ProjectDetailsGallery = () => {
   }, []);
 
   const openModal = (index) => {
+    AOS.refreshHard();
     setCurrentImageIndex(index);
     setIsModalOpen(true);
     document.body.style.overflow = 'hidden';
@@ -39,6 +46,7 @@ const ProjectDetailsGallery = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     document.body.style.overflow = 'auto';
+    setTimeout(() => AOS.refresh(), 300);
   };
 
   const navigateImage = (direction) => {
@@ -51,6 +59,7 @@ const ProjectDetailsGallery = () => {
     });
   };
   return (
+
     <section className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
