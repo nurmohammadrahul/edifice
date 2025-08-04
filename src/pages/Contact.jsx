@@ -71,7 +71,7 @@ const Contact = () => {
                 title="Contact Us"
                 backgroundImage=""
             />
-            <section data-aos="fade-up" className="bg-white text-black dark:bg-black dark:text-white max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 py-16 transition-colors duration-300">
+            <section data-aos="fade-up"  className="bg-white text-black dark:bg-black dark:text-white max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 py-16 transition-colors duration-300">
                 <div className="space-y-8" d>
                     {contactItems.map((item, index) => (
                         <div key={index} className="flex items-start gap-4">

@@ -60,8 +60,8 @@ const ProjectsGrid = ({ title, subtitle }) => {
   }, []);
 
   return (
-    <section data-aos="fade-up" className="py-16 bg-gray-100 text-black dark:bg-gray-800 dark:text-white">
-      <div className="max-w-7xl mx-auto px-4 text-center">
+    <section  className="py-16 bg-gray-100 text-black dark:bg-gray-800 dark:text-white">
+      <div data-aos="fade-up" className="max-w-7xl mx-auto px-4 text-center">
         <div className="text-center mb-10">
           {title !== "" && (
             <p className="text-[#c20e35] dark:text-red-600 text-sm uppercase tracking-wider relative inline-block mb-2 before:content-[''] before:absolute before:-left-4 before:top-1/2 before:-translate-y-1/2 before:w-2 before:h-2 before:bg-[#c20e35] before:rounded-full">

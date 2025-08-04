@@ -55,8 +55,8 @@ const Career = () => {
                 title="Career"
                 backgroundImage=""
             />
-            <section data-aos="fade-up" className="dark:bg-black dark:text-white bg-white text-black px-4 md:px-10 transition-colors duration-300 ease-in-out">
-                <div className="container mx-auto px-4">
+            <section className="dark:bg-black dark:text-white bg-white text-black px-4 md:px-10 transition-colors duration-300 ease-in-out">
+                <div data-aos="fade-up" className="container mx-auto px-4">
                     <div className="max-w-auto mx-auto">
                         <ul className="space-y-6">
                             {jobListings.map((job) => (

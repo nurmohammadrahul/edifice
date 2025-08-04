@@ -46,13 +46,12 @@ const Testimonials = () => {
 
   return (
     <section
-      data-aos="fade-up"
       className="relative text-white dark:text-black py-20 bg-center"
       style={{ backgroundImage: `url(${img})` }}
     >
-      <div className="bg-white/60 dark:bg-black/60 absolute inset-0 z-0 transition-colors duration-300"></div>
+      <div data-aos="fade-up" className="bg-white/60 dark:bg-black/60 absolute inset-0 z-0 transition-colors duration-300"></div>
 
-      <div className="relative z-10 container mx-auto px-4">
+      <div data-aos="fade-up" className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-[#c20e35] text-sm uppercase tracking-wider relative inline-block mb-2 
                 before:content-[''] before:absolute before:-left-4 before:top-1/2 

@@ -59,8 +59,8 @@ const ProjectDetailsGallery = () => {
   };
   return (
 
-    <section className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto">
+    <section  className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10">
+      <div data-aos="fade-up" className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {loadedImages.map((image, index) => (
             <div

@@ -12,8 +12,8 @@ const ProjectVideo = () => {
     }, []);
 
     return (
-        <section data-aos="fade-up" className="bg-white dark:bg-black py-16 px-4 md:px-10">
-            <div className="mx-auto w-[90%] md:w-[70%] bg-gray-200 dark:bg-gray-800 rounded-xl p-4">
+        <section  className="bg-white dark:bg-black py-16 px-4 md:px-10">
+            <div data-aos="fade-up" className="mx-auto w-[90%] md:w-[70%] bg-gray-200 dark:bg-gray-800 rounded-xl p-4">
                 {isClient ? (
                     <div className="relative pt-[56.25%]">
                         <iframe

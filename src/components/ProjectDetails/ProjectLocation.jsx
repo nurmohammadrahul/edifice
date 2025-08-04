@@ -8,8 +8,8 @@ const ProjectLocation = () => {
         });
     })
     return (
-        <section data-aos="fade-up" className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10 transition-colors duration-300">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
+        <section className="bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10 transition-colors duration-300">
+            <div data-aos="fade-up" className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
                 <div className="w-full md:w-[30%] flex items-center">
                     <div className="w-full">
                         <h2 className="w-full text-3xl md:text-4xl font-extrabold uppercase text-[#c20e35] mb-4 tracking-wider leading-snug">

@@ -9,10 +9,9 @@ const AboutSection = () => {
         });
     }, []);
     return (
-        <section className="bg-white text-black dark:bg-black dark:text-white py-20" data-aos="fade-up">
+        <section className="bg-white text-black dark:bg-black dark:text-white py-20">
             <div className="container mx-auto px-4 flex flex-col lg:flex-row justify-between gap-10">
-                {/* Left Content */}
-                <div className="space-y-6">
+                <div data-aos="fade-up" className="space-y-6">
                     <p className="text-[#c20e35] dark:text-red-600 text-sm uppercase tracking-wide">About Us</p>
                     <h2 className="text-2xl md:text-2xl font-bold leading-tight">
                         We Build Real Value for Your Dream Living
