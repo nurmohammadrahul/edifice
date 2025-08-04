@@ -15,7 +15,6 @@ const Home = () => {
         window.scrollTo(0, 0);
         setTimeout(() => {
             AOS.init({
-                once: true,
                 duration: 800,
                 easing: 'ease-in-out'
             });

@@ -55,8 +55,7 @@ const ProjectsGrid = ({ title, subtitle }) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      easing: 'ease-in-out',
-      once: 'true'
+      easing: 'ease-in-out'
     });
   }, []);
 

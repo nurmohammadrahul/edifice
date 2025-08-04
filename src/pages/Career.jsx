@@ -9,7 +9,7 @@ const Career = () => {
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+         
         });
         document.title = "Career | EDIFICE";
         window.scrollTo(0, 0);

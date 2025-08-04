@@ -37,7 +37,7 @@ const Gallery = () => {
     useEffect(() => {
         document.title = "Gallery | EDIFICE";
         window.scrollTo(0, 0);
-        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+        AOS.init({ duration: 800, easing: 'ease-in-out'});
 
         if (location.state?.imageIndex) {
             setCurrentImageIndex(location.state.imageIndex);

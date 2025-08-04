@@ -8,8 +8,7 @@ const Contact = () => {
     useEffect(() => {
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
-            once: true
+            easing: 'ease-in-out'
         });
         document.title = "Contact Us | EDIFICE";
         window.scrollTo(0, 0);

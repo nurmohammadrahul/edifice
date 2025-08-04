@@ -12,8 +12,7 @@ const GalleryAlbum = () => {
     useEffect(() => {
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
-            once: true
+            easing: 'ease-in-out'
         });
         document.title = "Gallery | EDIFICE";
         window.scrollTo(0, 0);

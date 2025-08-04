@@ -19,8 +19,7 @@ const ProjectDetailsGallery = () => {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      easing: 'ease-in-out',
-      once: true
+      easing: 'ease-in-out'
     });
     const loadImage = (src) => {
       return new Promise((resolve, reject) => {
