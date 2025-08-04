@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import AOS from 'aos';
 import { useNavigate } from "react-router-dom";
 import img1 from "../assets/images/news/1.jpg";
 import img2 from "../assets/images/news/2.jpg";
 import img3 from "../assets/images/news/3.jpg";
 import InnerHero from "../components/Hero/InnerHero";
+
 const GalleryAlbum = () => {
     const navigate = useNavigate();
     useEffect(() => {
@@ -57,11 +59,17 @@ const GalleryAlbum = () => {
                                 className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
                                 onClick={handleGalleryClick}
                             >
-                                <img
-                                    src={item.imageSrc}
-                                    alt={item.altText}
-                                    className="w-full h-72 object-cover transform transition duration-500 group-hover:scale-110"
-                                />
+                                <motion.div
+                                    className="w-full h-72 overflow-hidden"
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                >
+                                    <img
+                                        src={item.imageSrc}
+                                        alt={item.altText}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </motion.div>
                                 <div className="absolute bottom-0 w-full bg-white/60 dark:bg-black/60  dark:text-white text-black text-center py-3 backdrop-blur-sm transition duration-300">
                                     <h3 className="text-lg font-semibold transition duration-300 group-hover:text-[#c20e35]">
                                         {item.title}
@@ -73,7 +81,6 @@ const GalleryAlbum = () => {
                 </div>
             </section>
         </>
-
     );
 };
 

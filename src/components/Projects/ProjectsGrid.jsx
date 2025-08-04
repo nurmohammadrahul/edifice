@@ -5,6 +5,7 @@ import img4 from "../../assets/images/projects/aftabnagar.jpg"
 import img5 from "../../assets/images/projects/home-solution.jpg"
 import img6 from "../../assets/images/projects/lotus_Kamal.jpg"
 import AOS from "aos"
+import { motion} from 'framer-motion';
 import { useEffect } from "react"
 export const projects = [
   {
@@ -79,11 +80,20 @@ const ProjectsGrid = ({ title, subtitle }) => {
               <div className="group mx-auto mb-10 max-w-[380px] text-center md:mb-16 wow fadeInUp" data-wow-delay=".25s">
                 <div className="bg-white dark:bg-black shadow-lg overflow-hidden group cursor-pointer">
                   <a href={project.link || "#"}>
-                    <div className="overflow-hidden">
-                      <img
+                    <div className="overflow-hidden rounded-lg shadow-lg group">
+                      <motion.img
                         src={project.image}
                         alt={project.title}
-                        className="w-full max-h-[450px] object-cover transition-transform group-hover:scale-110 duration-1500 ease-in-out"
+                        className="w-full max-h-[450px] object-cover"
+                        initial={{ scale: 1 }}
+                        whileHover={{
+                          scale: 1.1,
+                          transition: {
+                            duration: 0.5,
+                            ease: [0.4, 0, 0.2, 1]
+                          }
+                        }}
+                        loading="lazy"
                       />
                     </div>
                     <div className="p-5 bg-white dark:bg-black">

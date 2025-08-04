@@ -1,183 +1,122 @@
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import img1 from '../../assets/images/hero/01.jpg';
-import img2 from '../../assets/images/hero/02.jpg';
-import img3 from '../../assets/images/hero/03.jpg';
-import img4 from '../../assets/images/hero/04.jpg';
+import React, { useEffect, useState, useRef } from "react";
+import Slider from "react-slick";
+import img1 from "../../assets/images/hero/01.jpg";
+import img2 from "../../assets/images/hero/02.jpg";
+import img3 from "../../assets/images/hero/03.jpg";
+import "./HeroSlider.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HeroSlider = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRefs = useRef([]);
 
-    const slides = [
-        {
-            id: 1,
-            title: "Discover The",
-            subtitle: "Benchmark of Excellence",
-            largeText: true,
-            image: img1
-        },
-        {
-            id: 2,
-            title: "Slider Caption 2",
-            subtitle: "Slider Caption 2 Large Text Here",
-            largeText: true,
-            image: img2
-        },
-        {
-            id: 3,
-            title: "Slider Caption 3",
-            subtitle: "Slider Caption 3 Large Text Here",
-            largeText: true,
-            image: img3
-        },
-        {
-            id: 4,
-            title: "Slider Caption 4",
-            subtitle: "Slider Caption 4 Large Text Here",
-            largeText: true,
-            image: img4
-        }
-    ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    fade: false,
+    cssEase: "ease-out",
+    beforeChange: (oldIndex, newIndex) => {
+      // Remove zoom classes from old slide
+      const oldSlide = slideRefs.current[oldIndex];
+      if (oldSlide) {
+        oldSlide.classList.remove("zoom-in", "zoom-out");
+      }
+    },
+    afterChange: (index) => {
+      setCurrentSlide(index);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIsAnimating(true);
-            setTimeout(() => {
-                setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-                setIsAnimating(false);
-            }, 1000);
-        }, 5000);
+      // Add zoom-in to current slide
+      const current = slideRefs.current[index];
+      if (current) {
+        current.classList.add("zoom-in");
 
-        return () => clearInterval(interval);
-    }, [slides.length]);
+        // After zoom in animation ends, trigger zoom out
+        setTimeout(() => {
+          current.classList.remove("zoom-in");
+          current.classList.add("zoom-out");
+        }, 2000); // match zoomInAnim duration
 
-    const slideVariants = {
-        enter: (direction) => {
-            return {
-                x: direction > 0 ? 1000 : -1000,
-                opacity: 0,
-                scale: 0.8,
-                top: '15vh',
-                bottom: '15vh',
-                left: '5%',
-                right: '5%',
-            };
-        },
-        center: {
-            x: 0,
-            opacity: 1,
-            scale: 0.8,
-            top: '15vh',
-            bottom: '15vh',
-            left: '5%',
-            right: '5%',
-            transition: {
-                duration: 0.8
-            }
-        },
-        zoom: {
-            scale: 1,
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            transition: {
-                delay: 0.8,
-                duration: 1.2,
-                ease: "easeOut"
-            }
-        },
-        exit: (direction) => {
-            return {
-                x: direction < 0 ? 1000 : -1000,
-                opacity: 0,
-                transition: {
-                    duration: 0.8
-                }
-            };
-        }
-    };
+        // After zoom out animation ends, remove zoom-out class
+        setTimeout(() => {
+          current.classList.remove("zoom-out");
+        }, 4000); // total zoomIn + zoomOut duration
+      }
+    },
+  };
 
-    const textVariants = {
-        hidden: { y: 150, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                delay: 1.5,
-                duration: 0.8
-            }
-        }
-    };
+  const slides = [
+    {
+      id: 1,
+      image: img1,
+      title: "Discover The",
+      largeText: "Benchmark of Excellence",
+    },
+    {
+      id: 2,
+      image: img2,
+      title: "Slider Caption 1",
+      mediumText: "Slider Caption 2 Large Text Here",
+    },
+    {
+      id: 3,
+      image: img3,
+      title: "Slider Caption 1",
+      mediumText: "Slider Caption 2 Large Text Here",
+    },
+  ];
 
-    const lineVariants = {
-        hidden: { width: 0 },
-        visible: {
-            width: "100%",
-            transition: {
-                delay: 1.6,
-                duration: 0.9
-            }
-        }
-    };
-
-    return (
-        <section className="relative w-full h-[250px] md:h-screen">
-            <div>
-                <AnimatePresence custom={1} initial={false}>
-                    <motion.div
-                        key={slides[currentSlide].id}
-                        className="absolute bg-cover bg-center flex items-center"
-                        style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-                        custom={1}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate={["center", "zoom"]}
-                        exit="exit"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
-
-                        <div className="w-full px-4 md:px-8">
-                            <motion.div
-                                className="relative max-w-4xl mx-auto"
-                                initial="hidden"
-                                animate="visible"
-                            >
-                                <motion.h2
-                                    className="text-white text-2xl md:text-3xl uppercase tracking-wider mb-2"
-                                    variants={textVariants}
-                                >
-                                    {slides[currentSlide].title}
-                                </motion.h2>
-
-                                {slides[currentSlide].largeText ? (
-                                    <motion.span
-                                        className=" block text-white text-3xl md:text-6xl leading-tight"
-                                        variants={textVariants}
-                                    >
-                                        {slides[currentSlide].subtitle}
-                                    </motion.span>
-                                ) : (
-                                    <motion.span
-                                        className="block text-white text-2xl md:text-5xl mt-2"
-                                        variants={textVariants}
-                                    >
-                                        {slides[currentSlide].subtitle}
-                                    </motion.span>
-                                )}
-
-                                <motion.div
-                                    className="absolute bottom-0 left-0 h-[1px] bg-white"
-                                    variants={lineVariants}
-                                />
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
+  return (
+    <section className="relative w-full h-[250px] md:h-screen overflow-hidden">
+      <div className="c-slider">
+        <Slider {...settings} className="c-slider-init slick-initialized slick-slider">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className="c-slide"
+              ref={(el) => (slideRefs.current[index] = el)}
+              style={{ position: "relative" }}
+            >
+              {/* Background div with zoom animations */}
+              <div
+                className="c-slide-bg"
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  top: 0,
+                  left: 0,
+                  zIndex: 1,
+                }}
+              />
+              {/* Content */}
+              <div className="c-slide-content" style={{ position: "relative", zIndex: 2 }}>
+                <div className="c-wrap c-wrap--line">
+                  <h2 className="c-slide__title">
+                    {slide.title}
+                    {slide.largeText && (
+                      <span className="c-slide__title--large">{slide.largeText}</span>
+                    )}
+                    {slide.mediumText && (
+                      <span className="c-slide__title--medium">{slide.mediumText}</span>
+                    )}
+                  </h2>
+                </div>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </Slider>
+      </div>
+    </section>
+  );
 };
 
 export default HeroSlider;

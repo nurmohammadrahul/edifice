@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion'; // Added motion import
 import news1 from "../assets/images/news/1.jpg";
 import news2 from "../assets/images/news/2.jpg";
 import news3 from "../assets/images/news/3.jpg";
@@ -6,7 +7,8 @@ import news4 from "../assets/images/news/4.jpg";
 import news5 from "../assets/images/news/5.jpg";
 import news6 from "../assets/images/news/6.jpg";
 import InnerHero from '../components/Hero/InnerHero';
-import AOS from 'aos'
+import AOS from 'aos';
+
 export const newsItems = [
     {
         id: 1,
@@ -51,7 +53,6 @@ export const newsItems = [
         link: "/news/6"
     }
 ];
-
 const News = () => {
     useEffect(() => {
         AOS.init({
@@ -62,6 +63,7 @@ const News = () => {
         document.title = "News | EDIFICE";
         window.scrollTo(0, 0);
     }, []);
+
     return (
         <>
             <InnerHero
@@ -77,11 +79,17 @@ const News = () => {
                             <div key={item.id} className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
                                 <a href={item.link} className="block">
                                     <div className="overflow-hidden h-60">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover transform transition duration-500 group-hover:scale-110"
-                                        />
+                                        <motion.div
+                                            className="w-full h-full"
+                                            whileHover={{ scale: 1.1 }}
+                                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                                        >
+                                            <img
+                                                src={item.image}
+                                                alt={item.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </motion.div>
                                     </div>
                                     <div className="p-6">
                                         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
@@ -98,7 +106,6 @@ const News = () => {
                 </div>
             </section>
         </>
-
     );
 };
 

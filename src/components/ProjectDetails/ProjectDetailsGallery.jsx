@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import img1 from "../../assets/images/hero/1.jpg";
 import img2 from "../../assets/images/hero/2.jpg";
 import img3 from "../../assets/images/hero/3.jpg";
-
+import { motion } from 'framer-motion';
 const ProjectDetailsGallery = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -55,17 +55,23 @@ const ProjectDetailsGallery = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {loadedImages.map((image, index) => (
-            <div 
+            <div
               key={index}
               className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
               onClick={() => openModal(index)}
             >
-              <img 
-                src={image.src} 
-                alt={image.alt}
-                className="w-full h-72 object-cover transform transition duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
+              <motion.div
+                className="w-full h-72 overflow-hidden"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </motion.div>
             </div>
           ))}
         </div>
@@ -73,11 +79,11 @@ const ProjectDetailsGallery = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
           onClick={closeModal}
         >
-          <button 
+          <button
             className="absolute top-6 right-6 text-white text-3xl hover:text-[#c20e35] z-50 focus:outline-none"
             onClick={(e) => {
               e.stopPropagation();
@@ -88,7 +94,7 @@ const ProjectDetailsGallery = () => {
             &times;
           </button>
 
-          <button 
+          <button
             className="absolute left-6 text-white text-4xl hover:text-[#c20e35] z-50 focus:outline-none"
             onClick={(e) => {
               e.stopPropagation();
@@ -100,7 +106,7 @@ const ProjectDetailsGallery = () => {
           </button>
 
           <div className="relative max-w-[90vw] max-h-[90vh]">
-            <img 
+            <img
               src={loadedImages[currentImageIndex]?.src}
               alt={loadedImages[currentImageIndex]?.alt}
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
@@ -108,7 +114,7 @@ const ProjectDetailsGallery = () => {
             />
           </div>
 
-          <button 
+          <button
             className="absolute right-6 text-white text-4xl hover:text-[#c20e35] z-50 focus:outline-none"
             onClick={(e) => {
               e.stopPropagation();
@@ -116,7 +122,7 @@ const ProjectDetailsGallery = () => {
             }}
             aria-label="Next image"
           >
-           ❯
+            ❯
           </button>
         </div>
       )}

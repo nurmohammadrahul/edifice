@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import InnerHero from '../components/Hero/InnerHero';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -80,7 +81,7 @@ const Gallery = () => {
             <div className='relative z-0'>
                 <InnerHero subtitle="Our" title="GALLERY" backgroundImage="" />
             </div>
-            
+
             <section
                 data-aos="fade-up"
                 className="relative z-0 bg-white text-black dark:bg-black dark:text-white py-16 px-4 md:px-10 transition-colors duration-300 ease-in-out"
@@ -93,14 +94,21 @@ const Gallery = () => {
                                 className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
                                 onClick={() => openModal(index)}
                             >
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="w-full h-72 object-cover transform transition duration-500 group-hover:scale-110 ease-in-out"
-                                    loading="lazy"
-                                />
+                                <motion.div
+                                    className="w-full h-72 overflow-hidden"
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                >
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        className="w-full h-full object-cover"
+                                        loading="lazy"
+                                    />
+                                </motion.div>
                             </div>
                         ))}
+
                     </div>
                 </div>
             </section>
